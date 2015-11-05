@@ -9,6 +9,7 @@
     tools:context=".MainMenu" >
 
     <TableLayout
+        android:id="@+id/tableLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -30,7 +31,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Withdraw" />
-
         </TableRow>
 
         <TableRow
@@ -43,7 +43,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Balance History" />
-
         </TableRow>
 
         <TableRow
@@ -56,7 +55,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Transfer" />
-
         </TableRow>
 
         <TableRow
@@ -65,5 +63,14 @@
             android:layout_height="wrap_content" >
         </TableRow>
     </TableLayout>
+
+    <TextView
+        android:id="@+id/login_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="38dp"
+        android:text="Logged in as:" />
 
 </RelativeLayout>

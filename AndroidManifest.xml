@@ -15,7 +15,9 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.a2_4hc2.MainMenu"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +26,8 @@
         </activity>
         <activity
             android:name="com.example.a2_4hc2.Login"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name="com.example.a2_4hc2.BalanceHistory"
@@ -32,15 +35,24 @@
         </activity>
         <activity
             android:name="com.example.a2_4hc2.Deposit"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden">
         </activity>
         <activity
             android:name="com.example.a2_4hc2.Transfer"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name="com.example.a2_4hc2.Withdraw"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape">
+        </activity>
+        <activity
+            android:name="com.example.a2_4hc2.DepositSplash"
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape">
         </activity>
     </application>
 

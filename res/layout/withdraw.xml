@@ -4,15 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/withdrawSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:text="Withdraw" />
-
     <TextView
         android:id="@+id/withdrawLabel"
         android:layout_width="wrap_content"
@@ -24,7 +15,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/withdrawLabelAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/withdrawAmount"
@@ -68,5 +59,22 @@
             android:layout_height="wrap_content"
             android:text="Savings" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/withdrawSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup1"
+        android:layout_toRightOf="@+id/withdrawLabelAmount"
+        android:text="Withdraw" />
+
+    <Button
+        android:id="@+id/withdrawBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/withdrawSubmit"
+        android:layout_alignBottom="@+id/withdrawSubmit"
+        android:layout_toLeftOf="@+id/withdrawLabelAmount"
+        android:text="Back" />
 
 </RelativeLayout>

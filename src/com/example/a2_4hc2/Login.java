@@ -29,6 +29,11 @@ public class Login extends Activity {
 		submit = (Button) findViewById(R.id.submit);
 		accNumberText = (EditText) findViewById(R.id.accountNumber);
 		
+		Bundle b = this.getIntent().getExtras();
+		if(b!=null){
+		     action = (Action) getIntent().getSerializableExtra("Action");
+		}
+		
 		submit.setClickable(false);
 		
 		accNumberText.addTextChangedListener(new TextWatcher() {
@@ -62,19 +67,26 @@ public class Login extends Activity {
 	         public void onClick(View v) {
 	        	 
 
-	             int accNumber = Integer.parseInt(accNumberText.getText().toString()); 
+	             double accNumber = Double.parseDouble(accNumberText.getText().toString()); 
 	             
 	             boolean validAccount = true;
 	             String clientName = "";
 	             
-	             
-	             
-	             switch (accNumber){
-	             	default: validAccount = false; break;
-	             	case 1112223333: clientName = "Geneva"; break;
-	             	case 1231231231: clientName = "Adam"; break;
-	             	case 1122331122: clientName = "Salina"; break;
+	             if (accNumber == 1112223333){
+	            	 clientName = "Geneva";
 	             }
+	             else if(accNumber == 1122331122){
+	            	 clientName = "Adam";
+	             }
+	             else if(accNumber == 1231231231){
+	            	 clientName = "Salina";
+	             }
+	             else{
+	            	 validAccount = false;
+	             }
+	             
+	             
+	             
 	        	 
 	             
 	             if (validAccount){

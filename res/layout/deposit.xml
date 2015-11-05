@@ -11,7 +11,67 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
-        android:text="Medium Text"
+        android:text="Please select the amount of money to deposit:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/deposit_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:inputType="number|numberDecimal"
+        android:imeOptions="flagNoExtractUi" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/deposit_submit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp" >
+
+        <RadioButton
+            android:id="@+id/chequing_deposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Chequing" />
+
+        <RadioButton
+            android:id="@+id/savings_deposit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Savings" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/radioGroup1"
+        android:layout_centerHorizontal="true"
+        android:text="Deposit into:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/deposit_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/deposit_amount"
+        android:layout_marginBottom="25dp"
+        android:text="Deposit" />
+
+    <Button
+        android:id="@+id/deposit_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/deposit_submit"
+        android:layout_alignBottom="@+id/deposit_submit"
+        android:layout_alignLeft="@+id/deposit_amount"
+        android:text="Back" />
 
 </RelativeLayout>

@@ -9,12 +9,15 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 public class Withdraw extends Activity {
 	
 	TextView withdrawLabel;
 	Client currentClient;
+	DialogInterface.OnClickListener dialogClickListener;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +25,7 @@ public class Withdraw extends Activity {
 		setContentView(R.layout.withdraw);
 		
 		SeekBar withdrawAmount = (SeekBar) findViewById(R.id.withdrawAmount);
-		withdrawLabel = (TextView) findViewById(R.id.withdrawLabel);
+		withdrawLabel = (TextView) findViewById(R.id.withdrawLabelAmount);
 		
 		Bundle b = this.getIntent().getExtras();
 		if(b!=null){
@@ -61,6 +64,31 @@ public class Withdraw extends Activity {
 		
 		Button withdrawButton = (Button) findViewById(R.id.withdrawSubmit);
 		
+		Button backButton = (Button) findViewById(R.id.withdrawBack);
+		
+		
+		dialogClickListener = new DialogInterface.OnClickListener() {
+			
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		    	Intent intent;
+		        switch (which){
+		        case DialogInterface.BUTTON_POSITIVE:
+		            //Yes button clicked
+		        	intent = new Intent(getBaseContext(), MainMenu.class);
+		        	intent.putExtra("CurrentClient", currentClient);
+		        	startActivity(intent);
+		            break;
+
+		        case DialogInterface.BUTTON_NEGATIVE:
+		            //No button clicked
+		        	intent = new Intent(getBaseContext(), MainMenu.class);
+		        	startActivity(intent);
+		            break;
+		        }
+		    }
+		};
+		
 		withdrawButton.setOnClickListener(new OnClickListener() {
 			
 	         @Override
@@ -70,13 +98,58 @@ public class Withdraw extends Activity {
 	        	 RadioButton chequing = (RadioButton) findViewById(R.id.chequing); 
 	        	 
 	        	 
-	        	 if (currentClient)
+	        	 if (chequing.isChecked()){
+	        		 if (amountToWithdraw > currentClient.chequing.getBalance()){
+	        			 Toast.makeText(getApplicationContext(), "We're sorry. " +
+	        			 		"You only have "+ String.valueOf(currentClient.chequing.getBalance()) + 
+	        			 		" to withdraw from.", Toast.LENGTH_LONG).show();
+	        		 }
+	        		 else{
+	        			 currentClient.chequing.withdraw(amountToWithdraw);
+	        			 Toast.makeText(getApplicationContext(), "You withdrew $" + amountToWithdraw +
+		        			 		" from your chequing account. The balance is now $"+ String.valueOf(currentClient.chequing.getBalance()) + 
+		        			 		".", Toast.LENGTH_LONG).show();
+	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Withdraw.this);
+	        			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
+	        			     .setNegativeButton("No", dialogClickListener).show();
+	        		 }
+	        	 }
+	        	 else{
+	        		 if (amountToWithdraw > currentClient.savings.getBalance()){
+	        			 Toast.makeText(getApplicationContext(), "We're sorry. " +
+	        			 		"You only have "+ String.valueOf(currentClient.savings.getBalance()) + 
+	        			 		" to withdraw from.", Toast.LENGTH_LONG).show();
+	        		 }
+	        		 else{
+	        			 currentClient.savings.withdraw(amountToWithdraw);
+	        			 Toast.makeText(getApplicationContext(), "You withdrew $" + amountToWithdraw +
+		        			 		" from your savings account. The balance is now $"+ String.valueOf(currentClient.savings.getBalance()) + 
+		        			 		".", Toast.LENGTH_LONG).show();
+	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Withdraw.this);
+	        			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
+	        			     .setNegativeButton("No", dialogClickListener).show();
+	        		 }
+	        		 
+	        	 }
 	        	 
 	        	 
 	         }
 
 	      });
+		
+		backButton.setOnClickListener(new OnClickListener() {
+			
+	         @Override
+	         public void onClick(View v) {
+		        	 Intent intent = new Intent(getBaseContext(), MainMenu.class); 
+		        	 intent.putExtra("CurrentClient", currentClient);
+		        	 startActivity(intent);
+	         }
+
+	      });
 	}
+	
+	
 
 }
 

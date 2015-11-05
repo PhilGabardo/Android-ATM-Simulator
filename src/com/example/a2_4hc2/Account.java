@@ -1,28 +1,28 @@
 package com.example.a2_4hc2;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 
-
-public class Account {
+public class Account implements Serializable{
 	
 	public enum AccountType {
 	    CHEQUING, SAVINGS
 	}
 	
-	private ArrayList<Float> actionHistory;
+	private ArrayList<Double> actionHistory;
 	private AccountType aType;
 
-	public Account( AccountType accType, ArrayList<Float> aHistory) {
+	public Account( AccountType accType, ArrayList<Double> aHistory) {
 	    aType = accType;
 	    actionHistory = aHistory;
 	}
 
-	public void deposit (float u_amm){
+	public void deposit (double u_amm){
 	    actionHistory.add(u_amm);
 	}
 
-	public double withdraw(float amount) {
+	public double withdraw(double amount) {
 	    actionHistory.add(0-amount);
 	    return getBalance();
 	}

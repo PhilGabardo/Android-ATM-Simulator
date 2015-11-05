@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainMenu extends Activity {
 	
@@ -24,6 +25,16 @@ public class MainMenu extends Activity {
 		if(b!=null){
 		     currentClient = (Client) getIntent().getSerializableExtra("CurrentClient");
 		     loggedIn = true;
+		}
+		
+		TextView loggedInAs = (TextView) findViewById(R.id.login_status);
+		
+		if (loggedIn){
+			loggedInAs.setText("Logged in as: " + currentClient.name + "\nChequing Balance: $" + String.valueOf(currentClient.chequing.getBalance()) +
+					"\nSavings Balance: $" + String.valueOf(currentClient.savings.getBalance()));
+		}
+		else{
+			loggedInAs.setText("Not logged in");
 		}
 		
 		Button withdraw = (Button) findViewById(R.id.withdraw);
