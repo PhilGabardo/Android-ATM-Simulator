@@ -11,27 +11,45 @@ import android.app.Activity;
 import android.view.Menu;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 public class BalanceHistory extends ListActivity {
+	
+	Client currentClient;
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
-    String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-        "Linux", "OS/2" };
     
+    Bundle b = this.getIntent().getExtras();
+	if(b!=null){
+	     currentClient = (Client) getIntent().getSerializableExtra("CurrentClient");
+	}
     setContentView(R.layout.balance_history);
     
     
-    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-        android.R.layout.simple_list_item_1, values);
-    setListAdapter(adapter);
+    final ListAdapter listAdapter = createListAdapter(currentClient.transactionHistory);
+    setListAdapter(listAdapter);
+    
+    Button backButton = (Button) findViewById(R.id.balance_history_back);
+    
+    backButton.setOnClickListener(new OnClickListener() {
+		
+        @Override
+        public void onClick(View v) {
+	        	 Intent intent = new Intent(getBaseContext(), MainMenu.class); 
+	        	 intent.putExtra("CurrentClient", currentClient);
+	        	 startActivity(intent);
+        }
+
+     });
   }
 
   @Override
@@ -41,49 +59,28 @@ public class BalanceHistory extends ListActivity {
   }
   
   
-  public enum UsState {
-	    DE("Delaware"),
-	    PA("Pennsylvania"),
-	    NJ("New Jersey");
-
-	       private String stateName;
-
-	    private UsState(final String name) {
-	        this.stateName = name;
-	    }
-
-	    public String getStateName() {
-	return this.stateName;
-	    }
-
-	    public String getAbbreviation() {
-	return this.name();
-	    }
-
-	}
-  
 
 	private static final String TEXT1 = "text1";
 	private static final String TEXT2 = "text2";
 
-	private List<Map<String, String>> convertToListItems(final UsState[] states) {
+	private List<Map<String, String>> convertToListItems(final ArrayList<Transaction> transactions) {
 	    final List<Map<String, String>> listItem =
-	      new ArrayList<Map<String, String>>(states.length);
+	      new ArrayList<Map<String, String>>(transactions.size());
 	
-	    for (final UsState state: states) {
+	    for (final Transaction transaction: transactions) {
 	        final Map<String, String> listItemMap = new HashMap<String, String>();
-	listItemMap.put(TEXT1, state.getStateName());
-	listItemMap.put(TEXT2, state.getAbbreviation());
+	listItemMap.put(TEXT1, String.valueOf(transaction.amount) + " - " + transaction.transactionType.toString());
+	listItemMap.put(TEXT2, transaction.accountType.toString() + " - " + transaction.date.toString());
 	listItem.add(Collections.unmodifiableMap(listItemMap));
 	    }
 	
 	    return Collections.unmodifiableList(listItem);
 	}
 	
-	 private ListAdapter createListAdapter(final UsState[] states) {
+	 private ListAdapter createListAdapter(final ArrayList<Transaction> transactions) {
 		    final String[] fromMapKey = new String[] {TEXT1, TEXT2};
 		    final int[] toLayoutId = new int[] {android.R.id.text1, android.R.id.text2};
-		    final List<Map<String, String>> list = convertToListItems(states);
+		    final List<Map<String, String>> list = convertToListItems(transactions);
 
 		    return new SimpleAdapter(this, list,
 		                          android.R.layout.simple_list_item_2,

@@ -11,7 +11,21 @@ import com.example.a2_4hc2.Account.AccountType;
 public class Transaction implements Serializable{
 	
 	public enum TransactionType {
-	    DEPOSIT, WITHDRAW
+	    DEPOSIT ("Deposit"), 
+	    WITHDRAW ("Withdraw");
+	    
+	    
+	    private final String name;       
+	    
+	    private TransactionType(String s) {
+	        name = s;
+	    }
+	    
+	    public String toString() {
+	        return this.name;
+	     }
+
+
 	}
 	
 	public double amount;

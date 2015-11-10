@@ -1,6 +1,10 @@
 package com.example.a2_4hc2;
 
+import java.util.Date;
+
+import com.example.a2_4hc2.Account.AccountType;
 import com.example.a2_4hc2.MainMenu.Action;
+import com.example.a2_4hc2.Transaction.TransactionType;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -61,6 +65,7 @@ public class WithdrawSplash extends Activity {
 	         public void run() { 
 	        	 if(type == Account.AccountType.CHEQUING){
 	        		 currentClient.chequing.withdraw(amountToWithdraw);
+	        		 currentClient.transactionHistory.add(new Transaction(amountToWithdraw, AccountType.CHEQUING, TransactionType.WITHDRAW, new Date(System.currentTimeMillis())));
         			 Toast.makeText(getApplicationContext(), "You withdrew $" + amountToWithdraw +
 	        			 		" from your chequing account. The balance is now $"+ String.valueOf(currentClient.chequing.getBalance()) + 
 	        			 		".", Toast.LENGTH_LONG).show();
@@ -70,6 +75,7 @@ public class WithdrawSplash extends Activity {
 	        	 else{
 
         			 currentClient.savings.withdraw(amountToWithdraw);
+        			 currentClient.transactionHistory.add(new Transaction(amountToWithdraw, AccountType.SAVINGS, TransactionType.WITHDRAW, new Date(System.currentTimeMillis())));
         			 Toast.makeText(getApplicationContext(), "You withdrew $" + amountToWithdraw +
 	        			 		" from your savings account. The balance is now $"+ String.valueOf(currentClient.savings.getBalance()) + 
 	        			 		".", Toast.LENGTH_LONG).show();

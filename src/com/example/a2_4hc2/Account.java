@@ -7,7 +7,20 @@ import java.io.Serializable;
 public class Account implements Serializable{
 	
 	public enum AccountType {
-	    CHEQUING, SAVINGS
+	    CHEQUING ("Chequings"), SAVINGS ("Savings");
+	    
+	    
+	    private final String name;       
+	    
+	    private AccountType(String s) {
+	        name = s;
+	    }
+	    
+	    public String toString() {
+	        return this.name;
+	     }
+
+	    
 	}
 	
 	private ArrayList<Double> actionHistory;

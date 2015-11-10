@@ -1,6 +1,10 @@
 package com.example.a2_4hc2;
 
+import java.util.Date;
+
+import com.example.a2_4hc2.Account.AccountType;
 import com.example.a2_4hc2.MainMenu.Action;
+import com.example.a2_4hc2.Transaction.TransactionType;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -61,11 +65,13 @@ public class DepositSplash extends Activity {
 	         public void run() { 
 	        	 if(type == Account.AccountType.CHEQUING){
 	        		 currentClient.chequing.deposit(amount);
+	        		 currentClient.transactionHistory.add(new Transaction(amount, AccountType.CHEQUING, TransactionType.DEPOSIT, new Date(System.currentTimeMillis())));
 	        		 Toast.makeText(getApplicationContext(), "$" + String.valueOf(amount) + " was deposited into your chequing account",
 	        				 Toast.LENGTH_LONG).show();
 	        	 }
 	        	 else{
 	        		 currentClient.savings.deposit(amount);
+	        		 currentClient.transactionHistory.add(new Transaction(amount, AccountType.SAVINGS, TransactionType.DEPOSIT, new Date(System.currentTimeMillis())));
 	        		 Toast.makeText(getApplicationContext(), "$" + String.valueOf(amount) + " was deposited into your savings account",
 	        				 Toast.LENGTH_LONG).show();
 	        	 }

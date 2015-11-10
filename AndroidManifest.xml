@@ -61,11 +61,6 @@
             android:label="@string/app_name" 
             android:screenOrientation="landscape">
         </activity>
-        <activity
-            android:name="com.example.a2_4hc2.WithdrawSplash"
-            android:label="@string/app_name" 
-            android:screenOrientation="landscape">
-        </activity>
     </application>
 
 </manifest>
