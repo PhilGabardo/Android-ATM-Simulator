@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class Deposit extends Activity {
 	Client currentClient;
@@ -47,13 +48,14 @@ public class Deposit extends Activity {
 	         @Override
 	         public void onClick(View v) {
 	        	 	Double amountToDeposit;
-	        	 	if(depositAmount.getText().toString() == null){
-	        	 		amountToDeposit = 0.00;
+	        	 	if(depositAmount.getText().toString().matches("")){
+	        	 		 Toast.makeText(getApplicationContext(), "Please enter a value you wish to deposit",
+		        				 Toast.LENGTH_LONG).show();
 	        	 	}
 	        	 	
 	        	 	else{
-	        	 		amountToDeposit = Double.parseDouble(depositAmount.getText().toString());
-	        	 	}
+	        	 	
+	        	 	amountToDeposit = Double.parseDouble(depositAmount.getText().toString());
 	        	 	
 	        	 	Intent intent = new Intent(getBaseContext(), DepositSplash.class);
 	        	 	 if (chequingDeposit.isChecked()){
@@ -66,6 +68,7 @@ public class Deposit extends Activity {
 		        	 intent.putExtra("CurrentClient", currentClient);
 		        	 intent.putExtra("AmountDeposited", amountToDeposit);
 		        	 startActivity(intent);
+	        	 	}
 	         }
 
 	      });

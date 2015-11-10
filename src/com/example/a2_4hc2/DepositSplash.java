@@ -61,10 +61,13 @@ public class DepositSplash extends Activity {
 		
 		// Execute some code after 10 seconds have passed
 	    Handler handler = new Handler(); 
+	
 	    handler.postDelayed(new Runnable() { 
 	         public void run() { 
+	        	 String ActType = new String();
 	        	 if(type == Account.AccountType.CHEQUING){
 	        		 currentClient.chequing.deposit(amount);
+<<<<<<< Updated upstream
 	        		 currentClient.transactionHistory.add(new Transaction(amount, AccountType.CHEQUING, TransactionType.DEPOSIT, new Date(System.currentTimeMillis())));
 	        		 Toast.makeText(getApplicationContext(), "$" + String.valueOf(amount) + " was deposited into your chequing account",
 	        				 Toast.LENGTH_LONG).show();
@@ -75,9 +78,17 @@ public class DepositSplash extends Activity {
 	        		 Toast.makeText(getApplicationContext(), "$" + String.valueOf(amount) + " was deposited into your savings account",
 	        				 Toast.LENGTH_LONG).show();
 	        	 }
+=======
+	        		 ActType = "Chequing";
+	        	 }
+	        	 else{
+	        		 currentClient.savings.deposit(amount);
+	        		 ActType = "Savings";
+	        		 	 }
+>>>>>>> Stashed changes
 	        	 
 	        	 AlertDialog.Builder builder = new AlertDialog.Builder(DepositSplash.this);
-    			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
+    			 builder.setMessage("$" + String.valueOf(amount) + " was deposited into your "+ActType+" account.\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
     			     .setNegativeButton("No", dialogClickListener).show();
 	         } 
 	    }, 5000); 
