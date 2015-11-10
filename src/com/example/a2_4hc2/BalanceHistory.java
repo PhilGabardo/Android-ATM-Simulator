@@ -69,7 +69,7 @@ public class BalanceHistory extends ListActivity {
 	
 	    for (final Transaction transaction: transactions) {
 	        final Map<String, String> listItemMap = new HashMap<String, String>();
-	listItemMap.put(TEXT1, String.valueOf(transaction.amount) + " - " + transaction.transactionType.toString());
+	listItemMap.put(TEXT1,"$" + String.valueOf(transaction.amount) + " - " + transaction.transactionType.toString());
 	listItemMap.put(TEXT2, transaction.accountType.toString() + " - " + transaction.date.toString());
 	listItem.add(Collections.unmodifiableMap(listItemMap));
 	    }
