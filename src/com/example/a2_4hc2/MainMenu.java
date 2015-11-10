@@ -1,5 +1,7 @@
 package com.example.a2_4hc2;
 
+import java.text.DecimalFormat;
+
 import android.os.Bundle;
 import android.provider.SyncStateContract.Constants;
 import android.app.Activity;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainMenu extends Activity {
+	
 	
 	boolean loggedIn = false;
 	Client currentClient;
@@ -29,9 +32,11 @@ public class MainMenu extends Activity {
 		
 		TextView loggedInAs = (TextView) findViewById(R.id.login_status);
 		
+		DecimalFormat df = new DecimalFormat("0.00##");
+		
 		if (loggedIn){
-			loggedInAs.setText("Logged in as: " + currentClient.name + "\nChequing Balance: $" + String.format("%.2f",String.valueOf(currentClient.chequing.getBalance())) +
-					"\nSavings Balance: $" + String.format("%.2f",String.valueOf(currentClient.savings.getBalance())));
+			loggedInAs.setText("Logged in as: " + currentClient.name + "\nChequing Balance: $" + df.format(currentClient.chequing.getBalance()) +
+					"\nSavings Balance: $" + df.format(currentClient.savings.getBalance()));
 		}
 		else{
 			loggedInAs.setText("Please choose an action to continue");
