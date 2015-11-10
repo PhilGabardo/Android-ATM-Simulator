@@ -97,13 +97,11 @@ public class Transfer extends Activity {
 	        		 else{
 	        			 currentClient.transfer(true, amountToTransfer);
 	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Transfer.this);
-<<<<<<< Updated upstream
+
 	        			 builder.setCancelable(false);
-	        			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
-=======
 	        			 builder.setMessage("You transferred $" + amountToTransfer +
 		         			 		" from your chequing account to savings account.\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
->>>>>>> Stashed changes
+
 		     			     	.setNegativeButton("No", dialogClickListener).show();
 	        		 }
 	        	 }
@@ -116,13 +114,10 @@ public class Transfer extends Activity {
 	        		 else{
 	        			 currentClient.transfer(false, amountToTransfer);
 	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Transfer.this);
-<<<<<<< Updated upstream
+
 	        			 builder.setCancelable(false);
-	        			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
-=======
 	        			 builder.setMessage("You transferred $" + amountToTransfer +
 		         			 		" from your savings account to your chequings account.\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
->>>>>>> Stashed changes
 		     			     	.setNegativeButton("No", dialogClickListener).show();
 	        		 }
 	        	 }

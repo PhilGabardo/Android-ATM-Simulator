@@ -78,14 +78,10 @@ public class WithdrawSplash extends Activity {
 	        	 }
 	        	 
 	        	 AlertDialog.Builder builder = new AlertDialog.Builder(WithdrawSplash.this);
-<<<<<<< Updated upstream
 	        	 builder.setCancelable(false);
-    			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
-=======
     			 builder.setMessage("You withdrew $" + amountToWithdraw +
      			 		" from your "+ActType+" account. The balance is now $"+ String.valueOf(currentClient.savings.getBalance()) + 
-     			 		".\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
->>>>>>> Stashed changes
+     			 		".\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener) 
     			     .setNegativeButton("No", dialogClickListener).show();
 	         } 
 	    }, 5000); 
