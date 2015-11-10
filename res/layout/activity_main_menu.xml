@@ -6,62 +6,68 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainMenu" >
-
+    tools:context=".MainMenu" 
+    android:background= "@color/customgrey">
+  <ImageView
+		         android:id="@+id/pjlogo"
+		         android:layout_width="wrap_content"
+		         android:layout_height="wrap_content"
+		         android:src="@drawable/pjlogo" 
+		         android:layout_centerHorizontal="true"/>
     <TableLayout
         android:id="@+id/tableLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" >
-
-        <Button
-            android:id="@+id/deposit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Deposit" />
+        android:layout_below="@+id/pjlogo">
 
         <TableRow
             android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            >
 
+              <Button
+                  android:id="@+id/deposit"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:layout_marginRight="7dp"
+                  android:layout_weight=".23"
+                  android:drawableTop="@drawable/deposit128"
+                  android:text="Deposit"
+                  android:textColor="@color/text_color" />
+              
             <Button
                 android:id="@+id/withdraw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Withdraw" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="7dp"
+                android:layout_weight=".23"
+                android:drawableTop="@drawable/withdraw128"
+                android:text="Withdraw"
+                android:textColor="@color/text_color" />
+    
             <Button
                 android:id="@+id/history"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Balance History" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="7dp"
+                android:layout_weight=".23"
+                android:drawableTop="@drawable/balancehistory128"
+                android:text="Balance History"
+                android:textColor="@color/text_color" />
+ 
             <Button
-                android:id="@+id/transfer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Transfer" />
+            android:id="@+id/transfer"
+      		android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:drawableTop="@drawable/transfer128"
+            android:text="Transfer"
+            android:textColor="@color/text_color"
+            android:layout_weight=".23" />
         </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
+     
     </TableLayout>
 
     <TextView

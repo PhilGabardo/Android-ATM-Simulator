@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+     <color name="customgrey">#ff333333</color>
+     <color name="text_color">#ffffcc33</color>
+     <color name="dark_orange">#ffffae00</color>
+     
 </resources>

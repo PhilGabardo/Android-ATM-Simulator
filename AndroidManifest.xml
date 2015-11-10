@@ -13,11 +13,13 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        android:theme="@style/MyCustomTheme"
         <activity
             android:name="com.example.a2_4hc2.MainMenu"
             android:label="@string/app_name" 
             android:screenOrientation="landscape"
-            android:configChanges="orientation|keyboardHidden">
+            android:configChanges="orientation|keyboardHidden"
+ 		  >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +29,9 @@
         <activity
             android:name="com.example.a2_4hc2.Login"
             android:label="@string/app_name" 
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:background="@color/customgrey"
+            android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity
             android:name="com.example.a2_4hc2.BalanceHistory"

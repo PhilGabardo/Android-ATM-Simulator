@@ -8,10 +8,10 @@
         android:id="@+id/radioGroup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" >
-
+        android:layout_marginTop="20dp" 
+        android:layout_below="@+id/transfer_amount">
         <RadioButton
             android:id="@+id/chequing_to_savings"
             android:layout_width="wrap_content"
@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_below= "@+id/radioGroup1"
         android:text="Current Chequing Balance:" />
 
     <TextView
@@ -63,9 +64,9 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioGroup1"
         android:layout_alignParentTop="true"
         android:layout_marginTop="32dp"
-        android:layout_toLeftOf="@+id/transfer_amount"
         android:text="Transfer $"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -75,9 +76,17 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView1"
         android:layout_alignBottom="@+id/textView1"
-        android:layout_alignLeft="@+id/transfer_submit"
+        android:layout_alignRight="@+id/radioGroup1"
         android:ems="10"
         android:inputType="number|numberDecimal"
+<<<<<<< Updated upstream
         android:imeOptions="flagNoExtractUi" />
+=======
+<<<<<<< HEAD
+        android:width="150dp" />
+=======
+        android:imeOptions="flagNoExtractUi" />
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 
 </RelativeLayout>
