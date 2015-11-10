@@ -13,8 +13,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,13 +30,17 @@ public class DepositSplash extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+
 		setContentView(R.layout.deposit_splash);
+		
 		
         dialogClickListener = new DialogInterface.OnClickListener() {
 			
 		    @Override
 		    public void onClick(DialogInterface dialog, int which) {
 		    	Intent intent;
+		    	
 		        switch (which){
 		        case DialogInterface.BUTTON_POSITIVE:
 		            //Yes button clicked
@@ -51,6 +57,7 @@ public class DepositSplash extends Activity {
 		        }
 		    }
 		};
+		
 		
 		Bundle b = this.getIntent().getExtras();
 		if(b!=null){
@@ -78,10 +85,12 @@ public class DepositSplash extends Activity {
 
 	        	 
 	        	 AlertDialog.Builder builder = new AlertDialog.Builder(DepositSplash.this);
+	        	 builder.setCancelable(false);
     			 builder.setMessage("$" + String.valueOf(amount) + " was deposited into your "+ActType+" account.\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
     			     .setNegativeButton("No", dialogClickListener).show();
 	         } 
 	    }, 5000); 
 		
 	}
+	
 }

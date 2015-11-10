@@ -53,10 +53,14 @@ public class Client implements Serializable{
 		if (cheqToSav){
 			chequing.withdraw(amount);
 			savings.deposit(amount);
+			transactionHistory.add(new Transaction(amount, AccountType.CHEQUING, TransactionType.WITHDRAW, new Date(System.currentTimeMillis())));
+			transactionHistory.add(new Transaction(amount, AccountType.SAVINGS, TransactionType.DEPOSIT, new Date(System.currentTimeMillis())));
 		}
 		else{
 			savings.withdraw(amount);
 			chequing.deposit(amount);
+			transactionHistory.add(new Transaction(amount, AccountType.CHEQUING, TransactionType.DEPOSIT, new Date(System.currentTimeMillis())));
+			transactionHistory.add(new Transaction(amount, AccountType.SAVINGS, TransactionType.WITHDRAW, new Date(System.currentTimeMillis())));
 		}
 		
 	}

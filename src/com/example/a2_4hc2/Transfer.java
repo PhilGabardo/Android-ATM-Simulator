@@ -92,6 +92,7 @@ public class Transfer extends Activity {
 		         			 		" from your chequing account to your savings account." 
 		         			 		, Toast.LENGTH_LONG).show();
 	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Transfer.this);
+	        			 builder.setCancelable(false);
 	        			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
 		     			     	.setNegativeButton("No", dialogClickListener).show();
 	        		 }
@@ -108,6 +109,7 @@ public class Transfer extends Activity {
 		         			 		" from your savings account to your chequings account." 
 		         			 		, Toast.LENGTH_LONG).show();
 	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Transfer.this);
+	        			 builder.setCancelable(false);
 	        			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
 		     			     	.setNegativeButton("No", dialogClickListener).show();
 	        		 }

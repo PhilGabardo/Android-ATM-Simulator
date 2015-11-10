@@ -82,6 +82,7 @@ public class WithdrawSplash extends Activity {
 	        	 }
 	        	 
 	        	 AlertDialog.Builder builder = new AlertDialog.Builder(WithdrawSplash.this);
+	        	 builder.setCancelable(false);
     			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
     			     .setNegativeButton("No", dialogClickListener).show();
 	         } 
