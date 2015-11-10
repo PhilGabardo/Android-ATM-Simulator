@@ -14,7 +14,7 @@
         android:text="Button" />
 
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/balance_history_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/balance_history_back"
@@ -32,4 +32,3 @@
         android:text="Balance History:" />
 
 </RelativeLayout>
-

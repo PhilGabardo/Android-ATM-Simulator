@@ -96,7 +96,7 @@ public class Withdraw extends Activity {
 			
 	         @Override
 	         public void onClick(View v) {
-	        	 int amountToWithdraw = Integer.parseInt(withdrawLabel.getText().toString().substring(1));
+	        	 Double amountToWithdraw = Double.parseDouble((withdrawLabel.getText().toString().substring(1)));
 	        	 
 	        	 RadioButton chequing = (RadioButton) findViewById(R.id.chequing); 
 	        	 
