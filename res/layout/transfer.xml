@@ -79,14 +79,8 @@
         android:layout_alignRight="@+id/radioGroup1"
         android:ems="10"
         android:inputType="number|numberDecimal"
-<<<<<<< Updated upstream
+
         android:imeOptions="flagNoExtractUi" />
-=======
-<<<<<<< HEAD
-        android:width="150dp" />
-=======
-        android:imeOptions="flagNoExtractUi" />
->>>>>>> origin/master
->>>>>>> Stashed changes
+
 
 </RelativeLayout>
