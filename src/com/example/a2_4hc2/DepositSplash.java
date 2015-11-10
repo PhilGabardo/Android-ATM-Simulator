@@ -80,7 +80,7 @@ public class DepositSplash extends Activity {
 	        	 else{
 	        		 currentClient.savings.deposit(amount);
 	        		 currentClient.transactionHistory.add(new Transaction(amount, AccountType.SAVINGS, TransactionType.DEPOSIT, new Date(System.currentTimeMillis())));
-	        		
+	        		 ActType = "Savings";
 	        	 }
 
 	        	 

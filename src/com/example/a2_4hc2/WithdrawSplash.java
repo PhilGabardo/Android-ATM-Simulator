@@ -63,27 +63,29 @@ public class WithdrawSplash extends Activity {
 	    Handler handler = new Handler(); 
 	    handler.postDelayed(new Runnable() { 
 	         public void run() { 
+	        	 String ActType = new String();
 	        	 if(type == Account.AccountType.CHEQUING){
 	        		 currentClient.chequing.withdraw(amountToWithdraw);
 	        		 currentClient.transactionHistory.add(new Transaction(amountToWithdraw, AccountType.CHEQUING, TransactionType.WITHDRAW, new Date(System.currentTimeMillis())));
-        			 Toast.makeText(getApplicationContext(), "You withdrew $" + amountToWithdraw +
-	        			 		" from your chequing account. The balance is now $"+ String.valueOf(currentClient.chequing.getBalance()) + 
-	        			 		".", Toast.LENGTH_LONG).show();
-        			 
+        			 ActType="Chequing";
         			
 	        	 }
 	        	 else{
 
         			 currentClient.savings.withdraw(amountToWithdraw);
         			 currentClient.transactionHistory.add(new Transaction(amountToWithdraw, AccountType.SAVINGS, TransactionType.WITHDRAW, new Date(System.currentTimeMillis())));
-        			 Toast.makeText(getApplicationContext(), "You withdrew $" + amountToWithdraw +
-	        			 		" from your savings account. The balance is now $"+ String.valueOf(currentClient.savings.getBalance()) + 
-	        			 		".", Toast.LENGTH_LONG).show();
+        			 ActType="Savings";
 	        	 }
 	        	 
 	        	 AlertDialog.Builder builder = new AlertDialog.Builder(WithdrawSplash.this);
+<<<<<<< Updated upstream
 	        	 builder.setCancelable(false);
     			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
+=======
+    			 builder.setMessage("You withdrew $" + amountToWithdraw +
+     			 		" from your "+ActType+" account. The balance is now $"+ String.valueOf(currentClient.savings.getBalance()) + 
+     			 		".\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
+>>>>>>> Stashed changes
     			     .setNegativeButton("No", dialogClickListener).show();
 	         } 
 	    }, 5000); 

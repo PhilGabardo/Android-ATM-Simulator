@@ -78,7 +78,15 @@ public class Transfer extends Activity {
 			
 	         @Override
 	         public void onClick(View v) {
-	        	 double amountToTransfer = Double.parseDouble(transferAmount.getText().toString());
+	        	 double amountToTransfer;
+	        	 	if(transferAmount.getText().toString().matches("")){
+	        	 		 Toast.makeText(getApplicationContext(), "Please enter a value greater than $0.00 you wish to Transfer",
+		        				 Toast.LENGTH_LONG).show();
+	        	 	}
+	        	 	
+	        	 	else{
+	        	 	
+	        	amountToTransfer = Double.parseDouble(transferAmount.getText().toString());
 	        	 
 	        	 if (chequingToSavings.isChecked()){
 	        		 if (amountToTransfer > currentClient.chequing.getBalance()){
@@ -88,12 +96,14 @@ public class Transfer extends Activity {
 	        		 }
 	        		 else{
 	        			 currentClient.transfer(true, amountToTransfer);
-	        			 Toast.makeText(getApplicationContext(), "You transferred $" + amountToTransfer +
-		         			 		" from your chequing account to your savings account." 
-		         			 		, Toast.LENGTH_LONG).show();
 	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Transfer.this);
+<<<<<<< Updated upstream
 	        			 builder.setCancelable(false);
 	        			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
+=======
+	        			 builder.setMessage("You transferred $" + amountToTransfer +
+		         			 		" from your chequing account to savings account.\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
+>>>>>>> Stashed changes
 		     			     	.setNegativeButton("No", dialogClickListener).show();
 	        		 }
 	        	 }
@@ -105,16 +115,18 @@ public class Transfer extends Activity {
 	        		 }
 	        		 else{
 	        			 currentClient.transfer(false, amountToTransfer);
-	        			 Toast.makeText(getApplicationContext(), "You transferred $" + amountToTransfer +
-		         			 		" from your savings account to your chequings account." 
-		         			 		, Toast.LENGTH_LONG).show();
 	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Transfer.this);
+<<<<<<< Updated upstream
 	        			 builder.setCancelable(false);
 	        			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
+=======
+	        			 builder.setMessage("You transferred $" + amountToTransfer +
+		         			 		" from your savings account to your chequings account.\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
+>>>>>>> Stashed changes
 		     			     	.setNegativeButton("No", dialogClickListener).show();
 	        		 }
 	        	 }
-		        	 
+	        	 	}  	 
 	         }
 
 	      });
