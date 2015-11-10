@@ -20,7 +20,8 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:ems="10"
-        android:inputType="number" >
+        android:inputType="number"
+        android:imeOptions="flagNoExtractUi" >
 
         <requestFocus />
     </EditText>

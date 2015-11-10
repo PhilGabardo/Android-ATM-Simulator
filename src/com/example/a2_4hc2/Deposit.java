@@ -49,10 +49,10 @@ public class Deposit extends Activity {
 	        	 	 double amountToDeposit = Double.parseDouble(depositAmount.getText().toString());
 	        	 	Intent intent = new Intent(getBaseContext(), DepositSplash.class);
 	        	 	 if (chequingDeposit.isChecked()){
-	        	 		 intent.putExtra("AcountType", AccountType.CHEQUING);
+	        	 		 intent.putExtra("AccountType", AccountType.CHEQUING);
 	        	 	 }
 	        	 	 else{
-	        	 		intent.putExtra("AcountType", AccountType.SAVINGS);
+	        	 		intent.putExtra("AccountType", AccountType.SAVINGS);
 	        	 	 }
 		        	  
 		        	 intent.putExtra("CurrentClient", currentClient);
