@@ -47,7 +47,7 @@ public class Deposit extends Activity {
 	         @Override
 	         public void onClick(View v) {
 	        	 	Double amountToDeposit;
-	        	 	if(depositAmount.getText().toString() == ""){
+	        	 	if(depositAmount.getText().toString() == null){
 	        	 		amountToDeposit = 0.00;
 	        	 	}
 	        	 	
