@@ -46,7 +46,15 @@ public class Deposit extends Activity {
 			
 	         @Override
 	         public void onClick(View v) {
-	        	 	 double amountToDeposit = Double.parseDouble(depositAmount.getText().toString());
+	        	 	Double amountToDeposit;
+	        	 	if(depositAmount.getText().toString() == ""){
+	        	 		amountToDeposit = 0.00;
+	        	 	}
+	        	 	
+	        	 	else{
+	        	 		amountToDeposit = Double.parseDouble(depositAmount.getText().toString());
+	        	 	}
+	        	 	
 	        	 	Intent intent = new Intent(getBaseContext(), DepositSplash.class);
 	        	 	 if (chequingDeposit.isChecked()){
 	        	 		 intent.putExtra("AccountType", AccountType.CHEQUING);

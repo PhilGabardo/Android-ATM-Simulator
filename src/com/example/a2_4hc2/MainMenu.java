@@ -30,11 +30,11 @@ public class MainMenu extends Activity {
 		TextView loggedInAs = (TextView) findViewById(R.id.login_status);
 		
 		if (loggedIn){
-			loggedInAs.setText("Logged in as: " + currentClient.name + "\nChequing Balance: $" + String.valueOf(currentClient.chequing.getBalance()) +
-					"\nSavings Balance: $" + String.valueOf(currentClient.savings.getBalance()));
+			loggedInAs.setText("Logged in as: " + currentClient.name + "\nChequing Balance: $" + String.format("%.2f",String.valueOf(currentClient.chequing.getBalance())) +
+					"\nSavings Balance: $" + String.format("%.2f",String.valueOf(currentClient.savings.getBalance())));
 		}
 		else{
-			loggedInAs.setText("Not logged in");
+			loggedInAs.setText("Please choose an action to continue");
 		}
 		
 		Button withdraw = (Button) findViewById(R.id.withdraw);

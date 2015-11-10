@@ -8,6 +8,9 @@ import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.a2_4hc2.Account.AccountType;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -105,13 +108,14 @@ public class Withdraw extends Activity {
 	        			 		" to withdraw from.", Toast.LENGTH_LONG).show();
 	        		 }
 	        		 else{
-	        			 currentClient.chequing.withdraw(amountToWithdraw);
-	        			 Toast.makeText(getApplicationContext(), "You withdrew $" + amountToWithdraw +
-		        			 		" from your chequing account. The balance is now $"+ String.valueOf(currentClient.chequing.getBalance()) + 
-		        			 		".", Toast.LENGTH_LONG).show();
-	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Withdraw.this);
-	        			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
-	        			     .setNegativeButton("No", dialogClickListener).show();
+	        			 
+	        			Intent intent = new Intent(getBaseContext(), WithdrawSplash.class);	  
+	   		        	 intent.putExtra("CurrentClient", currentClient);
+	   		        	 intent.putExtra("AmountWithdrew", amountToWithdraw);
+	   		        	 intent.putExtra("AccountType", AccountType.CHEQUING);
+	   		        	 startActivity(intent);
+	   		        	 
+	        			 
 	        		 }
 	        	 }
 	        	 else{
@@ -121,13 +125,13 @@ public class Withdraw extends Activity {
 	        			 		" to withdraw from.", Toast.LENGTH_LONG).show();
 	        		 }
 	        		 else{
-	        			 currentClient.savings.withdraw(amountToWithdraw);
-	        			 Toast.makeText(getApplicationContext(), "You withdrew $" + amountToWithdraw +
-		        			 		" from your savings account. The balance is now $"+ String.valueOf(currentClient.savings.getBalance()) + 
-		        			 		".", Toast.LENGTH_LONG).show();
-	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Withdraw.this);
-	        			 builder.setMessage("Do you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
-	        			     .setNegativeButton("No", dialogClickListener).show();
+	        			 
+	        			 Intent intent = new Intent(getBaseContext(), WithdrawSplash.class);	  
+	   		        	 intent.putExtra("CurrentClient", currentClient);
+	   		        	 intent.putExtra("AmountWithdrew", amountToWithdraw);
+	   		        	 intent.putExtra("AccountType", AccountType.SAVINGS);
+	   		        	 startActivity(intent);
+	   		        	 
 	        		 }
 	        		 
 	        	 }
