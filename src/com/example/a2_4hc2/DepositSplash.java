@@ -67,25 +67,15 @@ public class DepositSplash extends Activity {
 	        	 String ActType = new String();
 	        	 if(type == Account.AccountType.CHEQUING){
 	        		 currentClient.chequing.deposit(amount);
-<<<<<<< Updated upstream
 	        		 currentClient.transactionHistory.add(new Transaction(amount, AccountType.CHEQUING, TransactionType.DEPOSIT, new Date(System.currentTimeMillis())));
-	        		 Toast.makeText(getApplicationContext(), "$" + String.valueOf(amount) + " was deposited into your chequing account",
-	        				 Toast.LENGTH_LONG).show();
-	        	 }
-	        	 else{
-	        		 currentClient.savings.deposit(amount);
-	        		 currentClient.transactionHistory.add(new Transaction(amount, AccountType.SAVINGS, TransactionType.DEPOSIT, new Date(System.currentTimeMillis())));
-	        		 Toast.makeText(getApplicationContext(), "$" + String.valueOf(amount) + " was deposited into your savings account",
-	        				 Toast.LENGTH_LONG).show();
-	        	 }
-=======
 	        		 ActType = "Chequing";
 	        	 }
 	        	 else{
 	        		 currentClient.savings.deposit(amount);
-	        		 ActType = "Savings";
-	        		 	 }
->>>>>>> Stashed changes
+	        		 currentClient.transactionHistory.add(new Transaction(amount, AccountType.SAVINGS, TransactionType.DEPOSIT, new Date(System.currentTimeMillis())));
+	        		
+	        	 }
+
 	        	 
 	        	 AlertDialog.Builder builder = new AlertDialog.Builder(DepositSplash.this);
     			 builder.setMessage("$" + String.valueOf(amount) + " was deposited into your "+ActType+" account.\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
