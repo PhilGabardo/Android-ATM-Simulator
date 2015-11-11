@@ -1,12 +1,9 @@
 package com.example.a2_4hc2;
 
-import java.text.DecimalFormat;
 
 import android.os.Bundle;
-import android.provider.SyncStateContract.Constants;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -32,11 +29,10 @@ public class MainMenu extends Activity {
 		
 		TextView loggedInAs = (TextView) findViewById(R.id.login_status);
 		
-		DecimalFormat df = new DecimalFormat("0.00##");
 		
 		if (loggedIn){
-			loggedInAs.setText("Logged in as: " + currentClient.name + "\nChequing Balance: $" + df.format(currentClient.chequing.getBalance()) +
-					"\nSavings Balance: $" + df.format(currentClient.savings.getBalance()));
+			loggedInAs.setText("Logged in as: " + currentClient.name + "\nChequing Balance: $" + currentClient.chequing.getBalance().toString() +
+					"\nSavings Balance: $" + currentClient.savings.getBalance().toString());
 		}
 		else{
 			loggedInAs.setText("Please choose an action to continue");
@@ -119,6 +115,10 @@ public class MainMenu extends Activity {
 
 	      });
 		
+	}
+	
+	@Override
+	public void onBackPressed() {
 	}
 
 

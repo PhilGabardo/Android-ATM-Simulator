@@ -7,24 +7,23 @@ import java.util.List;
 import java.util.Map;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class BalanceHistory extends ListActivity {
 	
-	Client currentClient;
+  Client currentClient;
+	
+	
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
     
@@ -34,7 +33,10 @@ public class BalanceHistory extends ListActivity {
 	}
     setContentView(R.layout.balance_history);
     
-    
+    TextView label = (TextView) findViewById(R.id.balance_history_label);
+    label.setText("Current Chequing Balance : $" + currentClient.chequing.getBalance().toString() + "\n"+
+    					"Current Savings Balance : $" + currentClient.savings.getBalance().toString() + "\n"
+    					+ "Balance History :");
     final ListAdapter listAdapter = createListAdapter(currentClient.transactionHistory);
     setListAdapter(listAdapter);
     
@@ -69,7 +71,7 @@ public class BalanceHistory extends ListActivity {
 	
 	    for (final Transaction transaction: transactions) {
 	        final Map<String, String> listItemMap = new HashMap<String, String>();
-	listItemMap.put(TEXT1,"$" + String.valueOf(transaction.amount) + " - " + transaction.transactionType.toString());
+	listItemMap.put(TEXT1,"$" + transaction.amount.toString() + " - " + transaction.transactionType.toString());
 	listItemMap.put(TEXT2, transaction.accountType.toString() + " - " + transaction.date.toString());
 	listItem.add(Collections.unmodifiableMap(listItemMap));
 	    }
@@ -85,6 +87,10 @@ public class BalanceHistory extends ListActivity {
 		    return new SimpleAdapter(this, list,
 		                          android.R.layout.simple_list_item_2,
 		                             fromMapKey, toLayoutId);
+		}
+	 
+	 @Override
+		public void onBackPressed() {
 		}
 
 } 

@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -78,7 +77,7 @@ public class Transfer extends Activity {
 			
 	         @Override
 	         public void onClick(View v) {
-	        	 double amountToTransfer;
+	        	 Money amountToTransfer;
 	        	 	if(transferAmount.getText().toString().matches("")){
 	        	 		 Toast.makeText(getApplicationContext(), "Please enter a value greater than $0.00 you wish to Transfer",
 		        				 Toast.LENGTH_LONG).show();
@@ -86,12 +85,12 @@ public class Transfer extends Activity {
 	        	 	
 	        	 	else{
 	        	 	
-	        	amountToTransfer = Double.parseDouble(transferAmount.getText().toString());
+	        	amountToTransfer = new Money(Double.parseDouble(transferAmount.getText().toString()));
 	        	 
 	        	 if (chequingToSavings.isChecked()){
-	        		 if (amountToTransfer > currentClient.chequing.getBalance()){
+	        		 if (amountToTransfer.amount > currentClient.chequing.getBalance().amount){
 	        			 Toast.makeText(getApplicationContext(), "We're sorry. " +
-		        			 		"You only have "+ String.valueOf(currentClient.chequing.getBalance()) + 
+		        			 		"You only have "+ currentClient.chequing.getBalance().toString() + 
 		        			 		" to withdraw from your chequing account.", Toast.LENGTH_LONG).show();
 	        		 }
 	        		 else{
@@ -99,16 +98,16 @@ public class Transfer extends Activity {
 	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Transfer.this);
 
 	        			 builder.setCancelable(false);
-	        			 builder.setMessage("You transferred $" + amountToTransfer +
+	        			 builder.setMessage("You transferred $" + amountToTransfer.toString() +
 		         			 		" from your chequing account to savings account.\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
 
 		     			     	.setNegativeButton("No", dialogClickListener).show();
 	        		 }
 	        	 }
 	        	 else{
-	        		 if (amountToTransfer > currentClient.savings.getBalance()){
+	        		 if (amountToTransfer.amount > currentClient.savings.getBalance().amount){
 	        			 Toast.makeText(getApplicationContext(), "We're sorry. " +
-		        			 		"You only have "+ String.valueOf(currentClient.savings.getBalance()) + 
+		        			 		"You only have "+ currentClient.savings.getBalance().toString() + 
 		        			 		" to withdraw from your savings account.", Toast.LENGTH_LONG).show();
 	        		 }
 	        		 else{
@@ -116,7 +115,7 @@ public class Transfer extends Activity {
 	        			 AlertDialog.Builder builder = new AlertDialog.Builder(Transfer.this);
 
 	        			 builder.setCancelable(false);
-	        			 builder.setMessage("You transferred $" + amountToTransfer +
+	        			 builder.setMessage("You transferred $" + amountToTransfer.toString() +
 		         			 		" from your savings account to your chequings account.\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
 		     			     	.setNegativeButton("No", dialogClickListener).show();
 	        		 }

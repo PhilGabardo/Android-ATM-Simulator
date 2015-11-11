@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.example.a2_4hc2.Account.AccountType;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
@@ -96,15 +95,15 @@ public class Withdraw extends Activity {
 			
 	         @Override
 	         public void onClick(View v) {
-	        	 Double amountToWithdraw = Double.parseDouble((withdrawLabel.getText().toString().substring(1)));
+	        	 Money amountToWithdraw = new Money(Double.parseDouble((withdrawLabel.getText().toString().substring(1))));
 	        	 
 	        	 RadioButton chequing = (RadioButton) findViewById(R.id.chequing); 
 	        	 
 	        	 
 	        	 if (chequing.isChecked()){
-	        		 if (amountToWithdraw > currentClient.chequing.getBalance()){
+	        		 if (amountToWithdraw.amount > currentClient.chequing.getBalance().amount){
 	        			 Toast.makeText(getApplicationContext(), "We're sorry. " +
-	        			 		"You only have "+ String.valueOf(currentClient.chequing.getBalance()) + 
+	        			 		"You only have "+ currentClient.chequing.getBalance().toString() + 
 	        			 		" to withdraw from.", Toast.LENGTH_LONG).show();
 	        		 }
 	        		 else{
@@ -119,9 +118,9 @@ public class Withdraw extends Activity {
 	        		 }
 	        	 }
 	        	 else{
-	        		 if (amountToWithdraw > currentClient.savings.getBalance()){
+	        		 if (amountToWithdraw.amount > currentClient.savings.getBalance().amount){
 	        			 Toast.makeText(getApplicationContext(), "We're sorry. " +
-	        			 		"You only have "+ String.valueOf(currentClient.savings.getBalance()) + 
+	        			 		"You only have "+ currentClient.savings.getBalance().toString() + 
 	        			 		" to withdraw from.", Toast.LENGTH_LONG).show();
 	        		 }
 	        		 else{
@@ -151,6 +150,10 @@ public class Withdraw extends Activity {
 	         }
 
 	      });
+	}
+	
+	@Override
+	public void onBackPressed() {
 	}
 	
 	

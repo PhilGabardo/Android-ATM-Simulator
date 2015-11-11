@@ -3,7 +3,6 @@ package com.example.a2_4hc2;
 import java.util.Date;
 
 import com.example.a2_4hc2.Account.AccountType;
-import com.example.a2_4hc2.MainMenu.Action;
 import com.example.a2_4hc2.Transaction.TransactionType;
 
 import android.os.Bundle;
@@ -12,18 +11,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.view.Menu;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager.LayoutParams;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 public class DepositSplash extends Activity {
 	Client currentClient;
-	double amount;
+	Money amount;
 	Account.AccountType type;
 	DialogInterface.OnClickListener dialogClickListener;
 	
@@ -62,7 +53,7 @@ public class DepositSplash extends Activity {
 		Bundle b = this.getIntent().getExtras();
 		if(b!=null){
 		     currentClient = (Client) getIntent().getSerializableExtra("CurrentClient");
-		     amount = (Double) getIntent().getSerializableExtra("AmountDeposited");
+		     amount = (Money) getIntent().getSerializableExtra("AmountDeposited");
 		     type = (Account.AccountType) getIntent().getSerializableExtra("AccountType");
 		}
 		
@@ -86,11 +77,14 @@ public class DepositSplash extends Activity {
 	        	 
 	        	 AlertDialog.Builder builder = new AlertDialog.Builder(DepositSplash.this);
 	        	 builder.setCancelable(false);
-    			 builder.setMessage("$" + String.valueOf(amount) + " was deposited into your "+ActType+" account.\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
+    			 builder.setMessage("$" + amount.toString() + " was deposited into your "+ActType+" account.\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener)
     			     .setNegativeButton("No", dialogClickListener).show();
 	         } 
 	    }, 5000); 
 		
+	}
+	@Override
+	public void onBackPressed() {
 	}
 	
 }

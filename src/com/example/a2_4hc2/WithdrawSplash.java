@@ -12,16 +12,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 public class WithdrawSplash extends Activity {
 	Client currentClient;
-	double amountToWithdraw;
+	Money amountToWithdraw;
 	Account.AccountType type;
 	DialogInterface.OnClickListener dialogClickListener;
 	
@@ -55,7 +49,7 @@ public class WithdrawSplash extends Activity {
 		Bundle b = this.getIntent().getExtras();
 		if(b!=null){
 		     currentClient = (Client) getIntent().getSerializableExtra("CurrentClient");
-		     amountToWithdraw = (Double) getIntent().getSerializableExtra("AmountWithdrew");
+		     amountToWithdraw = (Money) getIntent().getSerializableExtra("AmountWithdrew");
 		     type = (Account.AccountType) getIntent().getSerializableExtra("AccountType");
 		}
 		
@@ -79,12 +73,16 @@ public class WithdrawSplash extends Activity {
 	        	 
 	        	 AlertDialog.Builder builder = new AlertDialog.Builder(WithdrawSplash.this);
 	        	 builder.setCancelable(false);
-    			 builder.setMessage("You withdrew $" + amountToWithdraw +
-     			 		" from your "+ActType+" account. The balance is now $"+ String.valueOf(currentClient.savings.getBalance()) + 
+    			 builder.setMessage("You withdrew $" + amountToWithdraw.toString() +
+     			 		" from your "+ActType+" account. The balance is now $"+ currentClient.savings.getBalance().toString() + 
      			 		".\n\nDo you want to perform another task?").setPositiveButton("Yes", dialogClickListener) 
     			     .setNegativeButton("No", dialogClickListener).show();
 	         } 
 	    }, 5000); 
 		
+	}
+	
+	@Override
+	public void onBackPressed() {
 	}
 }

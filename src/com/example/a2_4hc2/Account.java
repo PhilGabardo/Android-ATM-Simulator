@@ -6,6 +6,10 @@ import java.io.Serializable;
 
 public class Account implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public enum AccountType {
 	    CHEQUING ("Chequings"), SAVINGS ("Savings");
 	    
@@ -23,29 +27,29 @@ public class Account implements Serializable{
 	    
 	}
 	
-	private ArrayList<Double> actionHistory;
+	private ArrayList<Money> actionHistory;
 	private AccountType aType;
 
-	public Account( AccountType accType, ArrayList<Double> aHistory) {
+	public Account( AccountType accType, ArrayList<Money> aHistory) {
 	    aType = accType;
 	    actionHistory = aHistory;
 	}
 
-	public void deposit (double u_amm){
+	public void deposit (Money u_amm){
 	    actionHistory.add(u_amm);
 	}
 
-	public double withdraw(double amount) {
-	    actionHistory.add(0-amount);
+	public Money withdraw(Money amount) {
+	    actionHistory.add(new Money(0-amount.amount));
 	    return getBalance();
 	}
 
-	public double getBalance() {
+	public Money getBalance() {
 		float balance = 0;
 		for (int i = 0 ; i < actionHistory.size(); i++){
-			balance += actionHistory.get(i);
+			balance += actionHistory.get(i).amount;
 		}
-	    return balance;
+	    return new Money(balance);
 	}
 	public AccountType getAccountType(){
 	    return aType;

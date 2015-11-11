@@ -1,12 +1,10 @@
 package com.example.a2_4hc2;
 
 import com.example.a2_4hc2.Account.AccountType;
-import com.example.a2_4hc2.MainMenu.Action;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -47,7 +45,7 @@ public class Deposit extends Activity {
 			
 	         @Override
 	         public void onClick(View v) {
-	        	 	Double amountToDeposit;
+	        	 	Money amountToDeposit;
 	        	 	if(depositAmount.getText().toString().matches("")){
 	        	 		 Toast.makeText(getApplicationContext(), "Please enter a value you wish to deposit",
 		        				 Toast.LENGTH_LONG).show();
@@ -55,7 +53,7 @@ public class Deposit extends Activity {
 	        	 	
 	        	 	else{
 	        	 	
-	        	 	amountToDeposit = Double.parseDouble(depositAmount.getText().toString());
+	        	 	amountToDeposit = new Money(Double.parseDouble(depositAmount.getText().toString()));
 	        	 	
 	        	 	Intent intent = new Intent(getBaseContext(), DepositSplash.class);
 	        	 	 if (chequingDeposit.isChecked()){
@@ -74,5 +72,9 @@ public class Deposit extends Activity {
 	      });
 		
 		
+	}
+	
+	@Override
+	public void onBackPressed() {
 	}
 }

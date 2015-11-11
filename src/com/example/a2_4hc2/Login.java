@@ -34,17 +34,19 @@ public class Login extends Activity {
 		     action = (Action) getIntent().getSerializableExtra("Action");
 		}
 		
-		submit.setClickable(false);
+		submit.setVisibility(View.GONE);
 		
 		accNumberText.addTextChangedListener(new TextWatcher() {
 
 			   @Override    
 			   public void onTextChanged(CharSequence s, int start,
 			     int before, int count) {
-			      if(s.length() != 10)
-			          submit.setClickable(false);
-			      else
-			    	  submit.setClickable(true);
+			      if(s.length() != 10){
+			    	  submit.setVisibility(View.GONE);
+			      }
+			      else{
+			    	  submit.setVisibility(View.VISIBLE);
+			      }
 			   }
 
 			@Override

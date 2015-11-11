@@ -10,6 +10,11 @@ import com.example.a2_4hc2.Account.AccountType;
 
 public class Transaction implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public enum TransactionType {
 	    DEPOSIT ("Deposit"), 
 	    WITHDRAW ("Withdraw");
@@ -28,12 +33,12 @@ public class Transaction implements Serializable{
 
 	}
 	
-	public double amount;
+	public Money amount;
 	public AccountType accountType;
 	public TransactionType transactionType;
 	public Date date;
 	
-	public Transaction(double amount, AccountType accountType, TransactionType transactionType, Date date){
+	public Transaction(Money amount, AccountType accountType, TransactionType transactionType, Date date){
 		this.amount = amount;
 		this.accountType = accountType;
 		this.transactionType = transactionType;
