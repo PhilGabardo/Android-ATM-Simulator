@@ -11,8 +11,8 @@ as completing the transaction (getting the cash) likely “completes” the inte
 swipes the card will be less error-prone (users will likely not forget their card).
 
 Our application supports the following features:
-−	Ability to enter an account number, simulating swiping/inserting a card
-−	Ability to withdraw and deposit cash, updating a bank account balance accordingly
-−	Ability to simply check/display account balances
-−	Transfers between accounts
+-	Ability to enter an account number, simulating swiping/inserting a card
+-	Ability to withdraw and deposit cash, updating a bank account balance accordingly
+-	Ability to simply check/display account balances
+-	Transfers between accounts
 - Viewing transaction history
