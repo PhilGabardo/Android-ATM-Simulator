@@ -9,6 +9,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+
+// Main menu
 public class MainMenu extends Activity {
 	
 	

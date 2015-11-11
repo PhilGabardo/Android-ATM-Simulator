@@ -7,7 +7,7 @@ import java.io.Serializable;
 import com.example.a2_4hc2.Account.AccountType;
 
 
-
+// Bank transactions (withdraws and deposits)
 public class Transaction implements Serializable{
 	
 	/**

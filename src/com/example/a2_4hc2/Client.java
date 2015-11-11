@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-
+// Actual bank user
 public class Client implements Serializable{
 	/**
 	 * 
@@ -24,7 +24,8 @@ public class Client implements Serializable{
 		transactionHistory = new ArrayList<Transaction>();
 		ArrayList<Money> cActionHistory = new ArrayList<Money>();
 		ArrayList<Money> sActionHistory = new ArrayList<Money>();
-
+		
+		// Create history of transactions
 	    sActionHistory.add(new Money(4789.83));
 	    transactionHistory.add(new Transaction(new Money(4789.83), AccountType.SAVINGS,TransactionType.DEPOSIT, new Date(System.currentTimeMillis() - (50 * DAY_IN_MS))));
 	    sActionHistory.add(new Money(-9.0));
@@ -53,6 +54,7 @@ public class Client implements Serializable{
 	    name = uname;
 	}
 	
+	// transfer money from chequings to savings, or vice versa
 	public void transfer(boolean cheqToSav, Money amount){
 		if (cheqToSav){
 			chequing.withdraw(amount);

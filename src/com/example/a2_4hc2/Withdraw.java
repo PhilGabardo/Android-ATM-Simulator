@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+// Withdraw money
 public class Withdraw extends Activity {
 	
 	TextView withdrawLabel;
@@ -43,13 +44,10 @@ public class Withdraw extends Activity {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				
-				// TODO Auto-generated method stub
-				
 			}
 			
 			@Override
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
 				
 			}
 			
@@ -59,7 +57,6 @@ public class Withdraw extends Activity {
 				progress = progress /20;
 				progress = progress*20;
 				withdrawLabel.setText("$" + String.valueOf(progress));
-				// TODO Auto-generated method stub
 				
 			}
 		});
@@ -76,14 +73,12 @@ public class Withdraw extends Activity {
 		    	Intent intent;
 		        switch (which){
 		        case DialogInterface.BUTTON_POSITIVE:
-		            //Yes button clicked
 		        	intent = new Intent(getBaseContext(), MainMenu.class);
 		        	intent.putExtra("CurrentClient", currentClient);
 		        	startActivity(intent);
 		            break;
 
 		        case DialogInterface.BUTTON_NEGATIVE:
-		            //No button clicked
 		        	intent = new Intent(getBaseContext(), MainMenu.class);
 		        	startActivity(intent);
 		            break;

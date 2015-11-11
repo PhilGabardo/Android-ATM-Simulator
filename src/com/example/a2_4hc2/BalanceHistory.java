@@ -19,10 +19,14 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+// View history of transactions
 public class BalanceHistory extends ListActivity {
 	
   Client currentClient;
-	
+  private static final String TEXT1 = "text1";
+  private static final String TEXT2 = "text2";
+
 	
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
@@ -34,9 +38,13 @@ public class BalanceHistory extends ListActivity {
     setContentView(R.layout.balance_history);
     
     TextView label = (TextView) findViewById(R.id.balance_history_label);
+    
+    // Display current balances and "Balance History" label
     label.setText("Current Chequing Balance : $" + currentClient.chequing.getBalance().toString() + "\n"+
     					"Current Savings Balance : $" + currentClient.savings.getBalance().toString() + "\n"
     					+ "Balance History :");
+    
+    // Set up adapter for list of transactions
     final ListAdapter listAdapter = createListAdapter(currentClient.transactionHistory);
     setListAdapter(listAdapter);
     
@@ -61,37 +69,30 @@ public class BalanceHistory extends ListActivity {
   }
   
   
-
-	private static final String TEXT1 = "text1";
-	private static final String TEXT2 = "text2";
-
-	private List<Map<String, String>> convertToListItems(final ArrayList<Transaction> transactions) {
-	    final List<Map<String, String>> listItem =
-	      new ArrayList<Map<String, String>>(transactions.size());
+  private List<Map<String, String>> convertToListItems(final ArrayList<Transaction> transactions) {
+    final List<Map<String, String>> listItem = new ArrayList<Map<String, String>>(transactions.size());
 	
-	    for (final Transaction transaction: transactions) {
-	        final Map<String, String> listItemMap = new HashMap<String, String>();
-	listItemMap.put(TEXT1,"$" + transaction.amount.toString() + " - " + transaction.transactionType.toString());
-	listItemMap.put(TEXT2, transaction.accountType.toString() + " - " + transaction.date.toString());
-	listItem.add(Collections.unmodifiableMap(listItemMap));
-	    }
-	
-	    return Collections.unmodifiableList(listItem);
+	for (final Transaction transaction: transactions) {
+	  final Map<String, String> listItemMap = new HashMap<String, String>();
+	  listItemMap.put(TEXT1,"$" + transaction.amount.toString() + " - " + transaction.transactionType.toString());
+	  listItemMap.put(TEXT2, transaction.accountType.toString() + " - " + transaction.date.toString());
+	  listItem.add(Collections.unmodifiableMap(listItemMap));
 	}
 	
-	 private ListAdapter createListAdapter(final ArrayList<Transaction> transactions) {
-		    final String[] fromMapKey = new String[] {TEXT1, TEXT2};
-		    final int[] toLayoutId = new int[] {android.R.id.text1, android.R.id.text2};
-		    final List<Map<String, String>> list = convertToListItems(transactions);
+	return Collections.unmodifiableList(listItem);
+  }
+	
+  private ListAdapter createListAdapter(final ArrayList<Transaction> transactions) {
+    final String[] fromMapKey = new String[] {TEXT1, TEXT2};
+    final int[] toLayoutId = new int[] {android.R.id.text1, android.R.id.text2};
+	final List<Map<String, String>> list = convertToListItems(transactions);
 
-		    return new SimpleAdapter(this, list,
-		                          android.R.layout.simple_list_item_2,
-		                             fromMapKey, toLayoutId);
+	return new SimpleAdapter(this, list, android.R.layout.simple_list_item_2, fromMapKey, toLayoutId);
 		}
 	 
-	 @Override
-		public void onBackPressed() {
-		}
+  @Override
+  public void onBackPressed() {	
+  }
 
 } 
 

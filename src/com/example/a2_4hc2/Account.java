@@ -3,13 +3,14 @@ package com.example.a2_4hc2;
 import java.util.ArrayList;
 import java.io.Serializable;
 
-
+// Bank account
 public class Account implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	public enum AccountType {
 	    CHEQUING ("Chequings"), SAVINGS ("Savings");
 	    
@@ -27,6 +28,7 @@ public class Account implements Serializable{
 	    
 	}
 	
+	// Keep track of deposits/withdraws
 	private ArrayList<Money> actionHistory;
 	private AccountType aType;
 

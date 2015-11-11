@@ -12,12 +12,17 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+
+// Deposit money into an account
 public class Deposit extends Activity {
+	
 	Client currentClient;
 	EditText depositAmount;
 	RadioButton chequingDeposit;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.deposit);
 		depositAmount = (EditText) findViewById(R.id.deposit_amount);
@@ -25,6 +30,7 @@ public class Deposit extends Activity {
 		Button submit = (Button) findViewById(R.id.deposit_submit);
 		chequingDeposit = (RadioButton) findViewById(R.id.chequing_deposit);
 		 
+		
 		Bundle b = this.getIntent().getExtras();
 		if(b!=null){
 		     currentClient = (Client) getIntent().getSerializableExtra("CurrentClient");
@@ -53,19 +59,19 @@ public class Deposit extends Activity {
 	        	 	
 	        	 	else{
 	        	 	
-	        	 	amountToDeposit = new Money(Double.parseDouble(depositAmount.getText().toString()));
-	        	 	
-	        	 	Intent intent = new Intent(getBaseContext(), DepositSplash.class);
-	        	 	 if (chequingDeposit.isChecked()){
-	        	 		 intent.putExtra("AccountType", AccountType.CHEQUING);
-	        	 	 }
-	        	 	 else{
-	        	 		intent.putExtra("AccountType", AccountType.SAVINGS);
-	        	 	 }
-		        	  
-		        	 intent.putExtra("CurrentClient", currentClient);
-		        	 intent.putExtra("AmountDeposited", amountToDeposit);
-		        	 startActivity(intent);
+		        	 	amountToDeposit = new Money(Double.parseDouble(depositAmount.getText().toString()));
+		        	 	
+		        	 	Intent intent = new Intent(getBaseContext(), DepositSplash.class);
+		        	 	if (chequingDeposit.isChecked()){
+		        	 	    intent.putExtra("AccountType", AccountType.CHEQUING);
+		        	 	}
+		        	 	else{
+		        	 	    intent.putExtra("AccountType", AccountType.SAVINGS);
+		        	 	 }
+			        	  
+			        	 intent.putExtra("CurrentClient", currentClient);
+			        	 intent.putExtra("AmountDeposited", amountToDeposit);
+			        	 startActivity(intent);
 	        	 	}
 	         }
 

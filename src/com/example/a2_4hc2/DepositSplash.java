@@ -12,6 +12,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+
+// Splash screen after depositing money
 public class DepositSplash extends Activity {
 	Client currentClient;
 	Money amount;

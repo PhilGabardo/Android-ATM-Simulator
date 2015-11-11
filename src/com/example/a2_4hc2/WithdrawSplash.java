@@ -3,7 +3,6 @@ package com.example.a2_4hc2;
 import java.util.Date;
 
 import com.example.a2_4hc2.Account.AccountType;
-import com.example.a2_4hc2.MainMenu.Action;
 import com.example.a2_4hc2.Transaction.TransactionType;
 
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+// Splash screen after withdrawing money
 public class WithdrawSplash extends Activity {
 	Client currentClient;
 	Money amountToWithdraw;
@@ -31,14 +31,12 @@ public class WithdrawSplash extends Activity {
 		    	Intent intent;
 		        switch (which){
 		        case DialogInterface.BUTTON_POSITIVE:
-		            //Yes button clicked
 		        	intent = new Intent(getBaseContext(), MainMenu.class);
 		        	intent.putExtra("CurrentClient", currentClient);
 		        	startActivity(intent);
 		            break;
 
 		        case DialogInterface.BUTTON_NEGATIVE:
-		            //No button clicked
 		        	intent = new Intent(getBaseContext(), MainMenu.class);
 		        	startActivity(intent);
 		            break;
@@ -53,7 +51,7 @@ public class WithdrawSplash extends Activity {
 		     type = (Account.AccountType) getIntent().getSerializableExtra("AccountType");
 		}
 		
-		// Execute some code after 10 seconds have passed
+		// Execute after 10 seconds have passed
 	    Handler handler = new Handler(); 
 	    handler.postDelayed(new Runnable() { 
 	         public void run() { 

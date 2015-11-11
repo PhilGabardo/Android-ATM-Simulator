@@ -13,6 +13,8 @@ import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
 
+
+// Login screen
 public class Login extends Activity {
 	
 	boolean submitEnabled = false;
@@ -36,6 +38,8 @@ public class Login extends Activity {
 		
 		submit.setVisibility(View.GONE);
 		
+		
+		// Only want submit button to be visible if user has enter the correct number of digits
 		accNumberText.addTextChangedListener(new TextWatcher() {
 
 			   @Override    
@@ -51,14 +55,12 @@ public class Login extends Activity {
 
 			@Override
 			public void afterTextChanged(Editable arg0) {
-				// TODO Auto-generated method stub
 				
 			}
 
 			@Override
 			public void beforeTextChanged(CharSequence arg0, int arg1,
 					int arg2, int arg3) {
-				// TODO Auto-generated method stub
 				
 			}
 			  });
@@ -74,6 +76,7 @@ public class Login extends Activity {
 	             boolean validAccount = true;
 	             String clientName = "";
 	             
+	             // hacky user check
 	             if (accNumber == 1112223333){
 	            	 clientName = "Geneva";
 	             }
@@ -86,9 +89,6 @@ public class Login extends Activity {
 	             else{
 	            	 validAccount = false;
 	             }
-	             
-	             
-	             
 	        	 
 	             
 	             if (validAccount){

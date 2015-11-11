@@ -3,6 +3,8 @@ package com.example.a2_4hc2;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
+
+// Represent money. Print amount as double with 2 decimal points.
 public class Money implements Serializable {
 	/**
 	 * 

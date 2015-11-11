@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+// Transfer money between chequing and savings account
 public class Transfer extends Activity {
 	
 	RadioButton chequingToSavings;
