@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.a2_4hc2"
+    package="com.a24hc3"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme" >
         
         <activity
-            android:name="com.example.a2_4hc2.MainMenu"
+            android:name="com.a24hc3.MainMenu"
             android:label="@string/app_name" 
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden">
@@ -26,38 +26,38 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.a2_4hc2.Login"
+             android:name="com.a24hc3.Login"
             android:label="@string/app_name" 
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name="com.example.a2_4hc2.BalanceHistory"
-            android:label="@string/app_name" 
+             android:name="com.a24hc3.BalanceHistory"
+            android:label="@string/app_name"  
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name="com.example.a2_4hc2.Deposit"
+            android:name="com.a24hc3.Deposit"
             android:label="@string/app_name" 
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden">
         </activity>
         <activity
-            android:name="com.example.a2_4hc2.Transfer"
+            android:name="com.a24hc3.Transfer"
             android:label="@string/app_name" 
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name="com.example.a2_4hc2.WithdrawSplash"
+            android:name="com.a24hc3.WithdrawSplash"
             android:label="@string/app_name" 
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name="com.example.a2_4hc2.Withdraw"
+           android:name="com.a24hc3.Withdraw"
             android:label="@string/app_name" 
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name="com.example.a2_4hc2.DepositSplash"
+            android:name="com.a24hc3.DepositSplash"
             android:label="@string/app_name" 
             android:screenOrientation="landscape">
         </activity>
