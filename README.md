@@ -1,4 +1,4 @@
-# A2_4HC2
+# Android ATM Simulator
 
 This is a project for SFWR ENG 4HC3: Human Computer Interfaces. 
 
